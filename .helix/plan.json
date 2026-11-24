@@ -7,7 +7,7 @@
   "ui_capture": null,
   "autonomy": "supervised",
   "open_questions": [
-    "What are the exact Qdrant collection dimensions for DDC CWICR?",
+    "Dataset selected: USCCDB (CC BY 4.0 open dataset with 2.85M observations) combined with Dupras Ledoux internal unit rates to replace CC BY-NC 4.0 DDC CWICR for 100% commercial license compliance.",
     "What is the OpenTakeoff MCP API specification?",
     "What Python orchestration framework to use (LangGraph, CrewAI, custom)?"
   ],
@@ -17,11 +17,11 @@
       "title": "Environment setup and dependency installation",
       "done_when": [
         "Python virtual environment created with Qdrant and OpenTakeoff MCP installed",
-        "DDC CWICR Qdrant snapshot loaded with 55K+ work items"
+        "USCCDB (CC BY 4.0 open data) and Dupras Ledoux internal unit prices loaded into Qdrant"
       ],
       "gates": ["behavior", "adversarial", "human"],
       "tests": [
-        "qdrant collection count matches DDC CWICR spec (55K+ work items)",
+        "qdrant collection count matches target (2.85M USCCDB + internal records)",
         "OpenTakeoff MCP server responds to ping"
       ],
       "status": "planned"
@@ -44,7 +44,7 @@
       "id": 3,
       "title": "Cost database vector search interface",
       "done_when": [
-        "Qdrant collection indexed with DDC CWICR data with vector search",
+        "Qdrant collection indexed with USCCDB open data and internal unit rates via vector search",
         "Search interface provides work item IDs and resource mappings"
       ],
       "gates": ["behavior", "adversarial", "human"],

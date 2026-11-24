@@ -8,7 +8,7 @@
 
 ## Open questions (answer before approving)
 
-- What are the exact Qdrant collection dimensions for DDC CWICR?
+- Dataset selected: **USCCDB (CC BY 4.0 open-data, 2.85M cost observations)** combined with Dupras Ledoux internal historical unit rates
 - What is the OpenTakeoff MCP API specification?
 - What Python orchestration framework to use (LangGraph, CrewAI, custom)?
 
@@ -32,10 +32,10 @@
 
 **Done when:**
 - Python virtual environment created with Qdrant and OpenTakeoff MCP installed
-- DDC CWICR Qdrant snapshot loaded with 55K+ work items
+- USCCDB (CC BY 4.0 open-data, 2.85M cost observations) and Dupras Ledoux internal unit rates loaded into Qdrant
 
 **Tests:**
-- qdrant collection count matches DDC CWICR spec (55K+ work items)
+- USCCDB open-data and internal unit rates search returns expected results
 - OpenTakeoff MCP server responds to ping
 
 ---
@@ -55,7 +55,7 @@
 ### 3. Cost database vector search interface
 
 **Done when:**
-- Qdrant collection indexed with DDC CWICR data with vector search
+- USCCDB open-data and internal unit rates indexed for vector search
 - Search interface provides work item IDs and resource mappings
 
 **Tests:**
