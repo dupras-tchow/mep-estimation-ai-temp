@@ -2,7 +2,7 @@
 
 ## Session Summary
 
-Created the helix planning structure for the MEP estimation workflow integration.
+Created the helix planning structure for the MEP estimation workflow integration. Data source finalized: USCCDB (CC BY 4.0 open-data, 2.85M cost observations) + Dupras Ledoux internal historical unit rates.
 
 ## Completed
 - ✅ Initialized git repository in `/Users/Tony/OpenBot/Transfers/mep-estimation/`
@@ -19,12 +19,8 @@ mep-estimation/
 ```
 
 ## Next Moves
-1. Answer open questions in the plan:
-   - Qdrant collection dimensions for DDC CWICR
-   - OpenTakeoff MCP API specification
-   - Python orchestration framework choice (LangGraph vs CrewAI)
-
-2. Set up the 7 checkpoints sequentially, starting with Environment Setup
+1. Data source finalized: **USCCDB (CC BY 4.0 open-data, 2.85M observations)** + Dupras Ledoux internal rates
+2. Proceed with checkpoint 1: Environment setup with Qdrant vector database and OpenTakeoff MCP
 
 ## Checkpoint Status
 | # | Checkpoint | Status |
