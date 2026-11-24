@@ -1,0 +1,115 @@
+{
+  "target": "Automated MEP construction estimation workflow with price validation",
+  "kind": "feature",
+  "reference": {"type": "doc", "location": "Requirements from IT expert - DDC CWICR database, OpenTakeoff MCP, OpenConstructionERP"},
+  "standards": ["CLAUDE.md", "docs/architecture.md"],
+  "behavior_harness": "python -m pytest tests/",
+  "ui_capture": null,
+  "autonomy": "supervised",
+  "open_questions": [
+    "What are the exact Qdrant collection dimensions for DDC CWICR?",
+    "What is the OpenTakeoff MCP API specification?",
+    "What Python orchestration framework to use (LangGraph, CrewAI, custom)?"
+  ],
+  "checkpoints": [
+    {
+      "id": 1,
+      "title": "Environment setup and dependency installation",
+      "done_when": [
+        "Python virtual environment created with Qdrant and OpenTakeoff MCP installed",
+        "DDC CWICR Qdrant snapshot loaded with 55K+ work items"
+      ],
+      "gates": ["behavior", "adversarial", "human"],
+      "tests": [
+        "qdrant collection count matches DDC CWICR spec (55K+ work items)",
+        "OpenTakeoff MCP server responds to ping"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": 2,
+      "title": "Takeoff integration - PDF/BIM quantity extraction",
+      "done_when": [
+        "OpenTakeoff MCP extracts quantities (length, area, volume, count)",
+        "Output in standardized format for downstream processing"
+      ],
+      "gates": ["behavior", "adversarial", "human"],
+      "tests": [
+        "Sample PDF with known quantities produces correct measurements",
+        "Output JSON matches expected schema"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": 3,
+      "title": "Cost database vector search interface",
+      "done_when": [
+        "Qdrant collection indexed with DDC CWICR data with vector search",
+        "Search interface provides work item IDs and resource mappings"
+      ],
+      "gates": ["behavior", "adversarial", "human"],
+      "tests": [
+        "Search for common MEP item returns expected results",
+        "Results include required fields (work_id, resource_id, unit_cost)"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": 4,
+      "title": "LLM orchestration layer",
+      "done_when": [
+        "Agent coordinates takeoff → database search → cost calculation flow",
+        "Error handling for missing database entries with confidence scoring"
+      ],
+      "gates": ["behavior", "adversarial", "human"],
+      "tests": [
+        "Full pipeline produces estimate for sample input",
+        "Missing item triggers fallback logic"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": 5,
+      "title": "Price validation and sanity checking",
+      "done_when": [
+        "±20% benchmark validation implemented with productivity checks",
+        "Cross-database sanity comparisons enabled"
+      ],
+      "gates": ["behavior", "adversarial", "human"],
+      "tests": [
+        "Estimate 20% below benchmark flagged as invalid",
+        "Productivity check rejects impossible values"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": 6,
+      "title": "Output generation - BOQ and reports",
+      "done_when": [
+        "Verified BOQ generated in standard format with confidence ranges",
+        "Cost report with line-item breakdown produced"
+      ],
+      "gates": ["behavior", "adversarial", "human"],
+      "tests": [
+        "BOQ contains all required fields and totals",
+        "Report format matches industry standard"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": 7,
+      "title": "Integration testing with real drawings",
+      "done_when": [
+        "End-to-end test with sample construction drawing validates accuracy",
+        "Performance metrics captured and documented"
+      ],
+      "gates": ["behavior", "adversarial", "human"],
+      "tests": [
+        "Full pipeline runs without errors on test drawing",
+        "Estimated costs within acceptable margin of known values"
+      ],
+      "status": "planned"
+    }
+  ],
+  "approved": null
+}
